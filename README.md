@@ -213,8 +213,6 @@ classDiagram
    ```bash
    java -cp bin Main
    ```
-## Licencia
-Este proyecto se distribuye bajo la licencia MIT.
 ## Agradecimientos
 Agradezco a mis profesores y compañeros por su apoyo y orientación durante el desarrollo de esta práctica. Sus aportes han sido fundamentales para el éxito de este proyecto.
 ## Contribuciones
