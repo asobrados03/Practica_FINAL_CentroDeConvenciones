@@ -331,15 +331,20 @@ classDiagram
 
 1. Clona este repositorio:
    ```bash
-   git clone https://github.com/tu_usuario/centro-convenciones.git
+   git clone https://github.com/asobrados03/Practica_FINAL_CentroDeConvenciones.git
+   cd Practica_FINAL_CentroDeConvenciones
    ```
 2. Compila el proyecto:
     ```bash
-   javac -d bin src/*.java
+   javac -d bin src/**/*.java
+   ```
+    Una alternativa a esto si no funciona sería:
+   ```bash
+   javac -d bin src/Entrada/*.java src/Menus/*.java src/practica_final_centrodeconvenciones/*.java
    ```
 3. Ejecuta el programa:
    ```bash
-   java -cp bin Main
+   java -cp bin practica_final_centrodeconvenciones.Practica_FINAL_CentroDeConvenciones
    ```
 ## Agradecimientos
 Agradezco a mis profesores y compañeros por su apoyo y orientación durante el desarrollo de esta práctica. Sus aportes han sido fundamentales para el éxito de este proyecto.
