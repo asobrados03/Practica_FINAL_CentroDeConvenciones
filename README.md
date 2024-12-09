@@ -5,8 +5,8 @@
 Este proyecto implementa un sistema de gestión para un Centro de Convenciones utilizando los principios de la Programación Orientada a Objetos (POO) y varios patrones de diseño. Proporciona funcionalidades para gestionar espacios, reservas, productos y aspectos económicos del centro.
 
 ## Autores
-- Fabio Rodríguez Gómez - 21730332R
-- Alfredo Sobrados González - 70273340Z
+- Fabio Rodríguez Gómez
+- Alfredo Sobrados González
 
 ## Características principales
 
