@@ -73,7 +73,6 @@ El proyecto incluye casos de prueba que verifican:
 ## Diagrama de Clases
 
 ```mermaid
-```mermaid
 classDiagram
     class Centro_Convenciones {
         - instancia: Centro_Convenciones
