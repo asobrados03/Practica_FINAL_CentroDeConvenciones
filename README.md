@@ -1,4 +1,4 @@
-# Centro de Convenciones - Sistema de Gestión
+# [PROGRAMACIÓN ORIENTADA A OBJETOS] Centro de Convenciones - Sistema de Gestión
 
 ## Descripción
 
