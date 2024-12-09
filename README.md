@@ -338,7 +338,7 @@ classDiagram
     ```bash
    javac -d bin src/**/*.java
    ```
-    Una alternativa a esto si no funciona sería:
+    Una alternativa al anterior comando si no funciona sería:
    ```bash
    javac -d bin src/Entrada/*.java src/Menus/*.java src/practica_final_centrodeconvenciones/*.java
    ```
