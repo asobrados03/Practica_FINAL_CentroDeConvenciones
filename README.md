@@ -184,19 +184,19 @@ classDiagram
         + mostrarInfo()
     }
 
-    Centro_Convenciones --> Espacio
-    Centro_Convenciones --> Reserva
-    Centro_Convenciones --> Carta
-    Reserva --> Consumicion
-    EquipamientoDecorador --> Espacio
-    MenuPrincipal --> Menus
-    Menus --> GestionEspacios
-    Menus --> GestionReservas
-    Menus --> GestionCartaProductos
-    Menus --> GestionEconomica
-    Carta <|-- Producto
-    Carta <|-- Seccion
-    Espacio --> Coste
+    Centro_Convenciones --> Espacio : "1 .. * tiene o puede tener"
+    Centro_Convenciones --> Reserva : "0 .. * tiene varias"
+    Centro_Convenciones --> Carta : "0 .. 1 tiene"
+    Reserva --> Consumicion : "0 .. * puede tener varias"
+    EquipamientoDecorador --> Espacio : "0 .. 1 puede decorar"
+    MenuPrincipal --> Menus : "1 provee de funcionalidades"
+    Menus --> GestionEspacios : "1 0 .. *"
+    Menus --> GestionReservas : "1 0 .. *"
+    Menus --> GestionCartaProductos : "1 0 .. *"
+    Menus --> GestionEconomica : "1 0 .. *"
+    Carta <|-- Producto : "1 0 .. *"
+    Carta <|-- Seccion : "1 0 .. *"
+    Espacio --> Coste : "0 .. * tiene un historial de precios"
 ```
 
 ## Instalación
