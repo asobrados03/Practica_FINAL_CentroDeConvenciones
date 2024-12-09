@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Este proyecto implementa un sistema de gestión para un Centro de Convenciones utilizando los principios de la Programación Orientada a Objetos (POO) y varios patrones de diseño. Proporciona funcionalidades para gestionar espacios, reservas, productos y aspectos económicos del centro.
+Este proyecto implementa un sistema de gestión para un Centro de Convenciones utilizando los principios de la Programación Orientada a Objetos (POO) y varios patrones de diseño. Proporciona funcionalidades para gestionar espacios, reservas, productos y aspectos económicos del centro. En este proyecto conjunto mi compañero y yo obtuvimos una calificación de 9,6/10.
 
 ## Autores
 - Fabio Rodríguez Gómez
@@ -69,6 +69,10 @@ El proyecto incluye casos de prueba que verifican:
 - Creación de espacios y reservas.
 - Gestión de consumiciones y productos.
 - Cálculos económicos.
+
+## Persistencia de datos
+
+El sistema serializa objetos a un archivo binario .dat para almacenar información de espacios, reservas y productos, garantizando la persistencia entre sesiones sin necesidad de bases de datos externas.
 
 ## Diagrama de Clases
 
@@ -346,6 +350,10 @@ classDiagram
    ```bash
    java -cp bin practica_final_centrodeconvenciones.Practica_FINAL_CentroDeConvenciones
    ```
+
+## Conclusiones
+El proyecto "Centro de Convenciones - Sistema de Gestión" destaca por su implementación efectiva de los principios de la Programación Orientada a Objetos (POO) y patrones de diseño como Singleton, Decorator, Composite y Strategy, que aportan flexibilidad, escalabilidad y reutilización al código. Su estructura modular y jerárquica, con una clara separación de responsabilidades entre clases como `Espacio`, `Reserva` y `Carta`, facilita el mantenimiento y futuras ampliaciones. Además, el sistema cubre áreas clave de gestión, como espacios, reservas, productos y aspectos económicos, haciéndolo práctico y aplicable a escenarios reales. La documentación incluye un detallado diagrama de clases que describe las relaciones entre los componentes, proporcionando una referencia clara para desarrolladores. Los casos de prueba aseguran la fiabilidad del sistema, validando funciones críticas como los cálculos económicos. Por último, el reconocimiento del esfuerzo colaborativo y la calificación sobresaliente de 9,6/10 reflejan tanto la calidad técnica como el compromiso del equipo.
+
 ## Agradecimientos
 Agradezco a mis profesores y compañeros por su apoyo y orientación durante el desarrollo de esta práctica. Sus aportes han sido fundamentales para el éxito de este proyecto.
 ## Contribuciones
