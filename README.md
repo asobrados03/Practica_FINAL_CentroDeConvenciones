@@ -76,14 +76,36 @@ El proyecto incluye casos de prueba que verifican:
 classDiagram
     class Centro_Convenciones {
         - instancia: Centro_Convenciones
-        - listaEspacios: ArrayList<Espacio>
-        - listaReservas: ArrayList<Reserva>
+        - listaEspacios: ArrayList~Espacio~
+        - listaReservas: ArrayList~Reserva~
         - carta: Seccion
-        + obtenerInstanciaCC(): Centro_Convenciones
-        + buscarEspacio(cod: String): Espacio
-        + altaEspacio(e: Espacio): boolean
+        + obtenerInstanciaCC() Centro_Convenciones
+        + buscarEspacio(cod: String) Espacio
+        + existe(e: Espacio):boolean
+        + altaEspacio(e: Espacio) boolean
+        + alterarDispEspc(es:Espacio)
+        + aniadirPrecioEspc(anio:int, es: Espacio, porcentaje: double)
         + listarInfoEspcDisponible()
-        + calcularIngresosCC(fI: LocalDate, fF: LocalDate): double
+        + listarInfoEspcNoDisponible()
+        + listarAllEspacios()
+        - buscarReserva(id: String) Reserva
+        + altaReserva(r: Reserva) boolean
+        + bajaReserva(id: String)
+        + aniadirConsumicionReserva(idR: String, con: Consumicion)
+        + mostrarConsumicionesReserva(idR: String)
+        + eliminarConsumicionReserva(idR: String, idC: String)
+        + listarInfoReservas()
+        + mostrarInfoReserva(id: String)
+        + agregarSeccion(c: Carta)
+        + agregarProducto(s: Carta, p: Carta)
+        + obtenerLista(s: Seccion) ArrayList~Carta~
+        + alterarDispProducto(p:Carta)
+        + mostrarInfoCarta(cod:String)
+        + calcularIngresosEspacio(fI: LocalDate, fF: LocalDate, es:Espacio) double
+        + calcularIngresosCC(fI: LocalDate, fF: LocalDate) double
+        + getCarta() Seccion
+        + getListaEspacios() ArrayList~Espacio~
+        + getListaReservas() ArrayList~Reserva~
     }
 
     class Espacio {
@@ -91,10 +113,18 @@ classDiagram
         - nombre: String
         - superficie: double
         - capacidad: int
-        - listaCostes: ArrayList<Coste>
+        - listaCostes: ArrayList~Coste~
         - estado: boolean
-        + getCodigo(): String
-        + calcularIngreso(): double
+        + getCodigo() String
+        + getNombre() String
+        + getSuperficie() double
+        + getCapacidad() int
+        + getEstado() boolean
+        + getListaCostes() ArrayList~Coste~
+        + setDisponibilidad(estado: boolean)
+        + setListaCostes(c: Coste)
+        + buscarCoste(anio: int) Coste
+        + calcularIngreso() double
     }
 
     class Reserva {
@@ -102,9 +132,18 @@ classDiagram
         - fecha: LocalDate
         - cliente: String
         - telefono: long
-        - listaConsumiciones: ArrayList<Consumicion>
-        + getEspacioDecorado(): Espacio
+        - id: String
+        - listaConsumiciones: ArrayList~Consumicion~
+        + setFecha(fecha: LocalDate)
+        + getEspacioDecorado() Espacio
+        + getFecha() LocalDate
+        + getCliente() String
+        + getTelefono() long
+        + getId() String
+        + getListaConsumiciones() ArrayList~Consumicion~
         + aniadirConsumicion(consumicion: Consumicion)
+        - buscarConsumicion(id: String) Consumicion
+        + eliminarConsumicion(id: String)
         + mostrarConsumiciones()
     }
 
@@ -112,91 +151,180 @@ classDiagram
         - nombre: String
         - id: String
         - descripcion: String
+        + getNombre() String
+        + getId() String
+        + getDescripcion() String
+        + getEstado() boolean
         + agregar(c: Carta)
         + mostrarInfo()
-        + recuperarCarta(nombre: String): Carta
+        + recuperarCarta(nombre: String) Carta
+        + setListaCostes(c: Coste)
+        + getLista() ArrayList~Carta~
+        + setEstado(estado: boolean)
     }
 
     class Producto {
-        - listaCostes: ArrayList<Coste>
+        - listaCostes: ArrayList~Coste~
         - estado: boolean
         + mostrarInfo()
-        + buscarCoste(anio: int): Coste
+        + agregar(e: Carta)
+        + setEstado(estado: boolean)
+        + setListaCostes(c: Coste)
+        + getEstadoImprimir(estado:boolean) String
+        + getEstado() boolean
+        + getCostes() ArrayList<Coste>
+        + recuperarCarta(id: String) Carta
+        + getLista() ArrayList~Carta~
+        + buscarCoste(anio: int) Coste
     }
 
     class EquipamientoDecorador {
+        - codigoNumerico: int
         - descripcion: String
         - espacio: Espacio
-        + calcularIngreso(cod: String): double
+        + calcularIngreso(cod: String) double
+        + getCodigoNum() int
+        + getDescripcion() String
+        + getCodigo() String
+        + getNombre() String
+        + getSuperficie() double
+        + getCapacidad() int
+        + getEstado() boolean
+        + getDescripcion() String
+        + calcularIngreso() double
+    }
+
+    class Ornamento {
+        - ingreso: double
+        + getDescripcion() String
+        + getNombre() String
+        + calcularIngreso() double
+    }
+
+    class Musica {
+        - ingreso: double
+        + getDescripcion() String
+        + getNombre() String
+        + calcularIngreso() double
+    }
+
+    class Escenario {
+        - ingreso: double
+        + getDescripcion() String
+        + getNombre() String
+        + calcularIngreso() double
     }
 
     class MenuPrincipal {
-        - menus: ArrayList<Menus>
-        + ejecutarOpciones(): String
+        - menus: ArrayList~Menus~
+        + ejecutarOpciones() String
     }
 
     class Menus {
         - centConv: Centro_Convenciones
-        + getCentConv(): Centro_Convenciones
-        + ejecutarOpciones(): String
+        + getCentConv() Centro_Convenciones
+        + ejecutar()
+        + ejecutarOpciones() String
     }
 
     class GestionEspacios {
         + darAltaEspacio()
-        + generarCodigoEspacio(): String
-        + ejecutarOpciones(): String
+        + generarCodigoEspacio() String
+        + aniadirPrecioEspacio()
+        + hacerDisponible()
+        + hacerNoDisponible()
+        + ejecutarOpciones() String
     }
 
     class GestionReservas {
         + darAltaReserva()
-        + generarCodigoReserva(): String
-        + ejecutarOpciones(): String
+        + generarCodigoReserva() String
+        + generarCodigoConsumicion() String
+        + contarNumeroConsumiciones() int
+        + darBajaReserva()
+        + mostrarInfoReservaConcreta()
+        + aniadirConsumicionReserva()
+        + eliminarConsumicionReserva()
+        + ejecutarOpciones() String
     }
 
     class GestionCartaProductos {
         + darAltaSeccion()
-        + generarCodigoProducto(): String
-        + ejecutarOpciones(): String
+        + contarNumeroSecciones() int
+        + darAltaProducto()
+        + contarNumeroProductos() int
+        + generarCodigoSeccion() String
+        + generarCodigoProducto() String
+        + mostrarInfoProducto()
+        + mostrarInfoSeccionConProductos()
+        + hacerProductoDisponible()
+        + hacerProductoNoDisponible()
+        + mostrarInfoProductosDisponibles()
+        + mostrarInfoProductosNoDisponibles()
+        + ejecutarOpciones() String
     }
 
     class GestionEconomica {
         + mostrarIngresosEspacio()
-        + calcularIngresosCC(): double
-        + ejecutarOpciones(): String
+        + mostrarIngresosCC()
+        + ejecutarOpciones() String
     }
 
     class Coste {
         - precio: double
         - anio: int
-        + getPrecio(): double
+        + getPrecio() double
+        + getAnio() int
     }
 
     class Consumicion {
         - producto: Producto
         - cantidad: int
         - id: String
-        + calcularCosteConsumicion(): double
+        + getProducto() Producto
+        + getCantidad() int
+        + getId() String
+        + calcularCosteConsumicion() double
     }
 
     class Seccion {
-        - listaProductos: ArrayList<Carta>
-        + agregar(c: Carta)
+        - listaProductos: ArrayList~Carta~
+        + getEstado() boolean
+        + getLista() ArrayList~Carta~
         + mostrarInfo()
+        + agregar(c: Carta)
+        + recuperarCarta(id: String) Carta
+        + setListaCostes(c: Coste)
+        + setEstado(estado:boolean)
     }
 
-    Centro_Convenciones --> Espacio : "1 .. * tiene o puede tener"
-    Centro_Convenciones --> Reserva : "0 .. * tiene varias"
-    Centro_Convenciones --> Carta : "0 .. 1 tiene"
-    Reserva --> Consumicion : "0 .. * puede tener varias"
-    EquipamientoDecorador --> Espacio : "0 .. 1 puede decorar"
-    MenuPrincipal --> Menus : "1 provee de funcionalidades"
-    Menus --> GestionEspacios : "1 0 .. *"
-    Menus --> GestionReservas : "1 0 .. *"
-    Menus --> GestionCartaProductos : "1 0 .. *"
-    Menus --> GestionEconomica : "1 0 .. *"
-    Carta <|-- Producto : "1 0 .. *"
-    Carta <|-- Seccion : "1 0 .. *"
-    Espacio --> Coste : "0 .. * tiene un historial de precios"
+    Centro_Convenciones "1" *-- "0 .. *" Espacio
+    Centro_Convenciones "1" *-- "0 .. 1" Seccion
+    Centro_Convenciones <.. Reserva : uso
+    Reserva "1" -- "0 .. *" Consumicion : tiene varias
+    EquipamientoDecorador --|> Espacio
+    EquipamientoDecorador <|-- Ornamento: {no excluyente, total}
+    EquipamientoDecorador <|-- Musica: {no excluyente, total}
+    EquipamientoDecorador <|-- Escenario: {no excluyente, total}
+    Espacio "1" -- "0 .. 1" EquipamientoDecorador : se utiliza en
+    Carta <|-- Producto
+    Carta <|-- Seccion
+    Carta "0..*" -- "1" Seccion
+    Espacio "1" -- "0 .. *" Coste
+    Reserva "0 .. *" -- "1" EquipamientoDecorador: puede tener varias
+    EquipamientoDecorador "1" -- "0 .. 1" Reserva: Permite guardar el objeto Espacio decorado
+    EquipamientoDecorador "1" -- "0 .. *" Coste
+    Consumicion "0 .. 1" --> "1" Producto: tiene o puede tener
+    Coste "0 .. *" -- "1" Producto: tiene
+
+    Menus "0 .. 1" -- "1" Centro_Convenciones: provee de funcionalidades a la estrategia
+
+    MenuPrincipal --|> Menus
+    MenuPrincipal "1" -- "0 .. *" Menus: puede tener varios
+    Menus <|-- GestionEspacios 
+    Menus <|-- GestionReservas 
+    Menus <|-- GestionCartaProductos
+    Menus <|-- GestionEconomica
 ```
 
 ## Instalación
