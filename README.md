@@ -317,7 +317,7 @@ classDiagram
     Consumicion "0 .. 1" --> "1" Producto: tiene o puede tener
     Coste "0 .. *" -- "1" Producto: tiene
 
-    Menus "0 .. 1" -- "1" Centro_Convenciones: provee de funcionalidades a la estrategia
+    Menus "0..1" -- "1" Centro_Convenciones: provee de funcionalidades a la estrategia
 
     MenuPrincipal --|> Menus
     MenuPrincipal "1" -- "0 .. *" Menus: puede tener varios
