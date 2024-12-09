@@ -70,6 +70,136 @@ El proyecto incluye casos de prueba que verifican:
 - Gestión de consumiciones y productos.
 - Cálculos económicos.
 
+## Diagrama de Clases
+
+```mermaid
+```mermaid
+classDiagram
+    class Centro_Convenciones {
+        - instancia: Centro_Convenciones
+        - listaEspacios: ArrayList<Espacio>
+        - listaReservas: ArrayList<Reserva>
+        - carta: Seccion
+        + obtenerInstanciaCC(): Centro_Convenciones
+        + buscarEspacio(cod: String): Espacio
+        + altaEspacio(e: Espacio): boolean
+        + listarInfoEspcDisponible()
+        + calcularIngresosCC(fI: LocalDate, fF: LocalDate): double
+    }
+
+    class Espacio {
+        - codigo: String
+        - nombre: String
+        - superficie: double
+        - capacidad: int
+        - listaCostes: ArrayList<Coste>
+        - estado: boolean
+        + getCodigo(): String
+        + calcularIngreso(): double
+    }
+
+    class Reserva {
+        - espacio: Espacio
+        - fecha: LocalDate
+        - cliente: String
+        - telefono: long
+        - listaConsumiciones: ArrayList<Consumicion>
+        + getEspacioDecorado(): Espacio
+        + aniadirConsumicion(consumicion: Consumicion)
+        + mostrarConsumiciones()
+    }
+
+    class Carta {
+        - nombre: String
+        - id: String
+        - descripcion: String
+        + agregar(c: Carta)
+        + mostrarInfo()
+        + recuperarCarta(nombre: String): Carta
+    }
+
+    class Producto {
+        - listaCostes: ArrayList<Coste>
+        - estado: boolean
+        + mostrarInfo()
+        + buscarCoste(anio: int): Coste
+    }
+
+    class EquipamientoDecorador {
+        - descripcion: String
+        - espacio: Espacio
+        + calcularIngreso(cod: String): double
+    }
+
+    class MenuPrincipal {
+        - menus: ArrayList<Menus>
+        + ejecutarOpciones(): String
+    }
+
+    class Menus {
+        - centConv: Centro_Convenciones
+        + getCentConv(): Centro_Convenciones
+        + ejecutarOpciones(): String
+    }
+
+    class GestionEspacios {
+        + darAltaEspacio()
+        + generarCodigoEspacio(): String
+        + ejecutarOpciones(): String
+    }
+
+    class GestionReservas {
+        + darAltaReserva()
+        + generarCodigoReserva(): String
+        + ejecutarOpciones(): String
+    }
+
+    class GestionCartaProductos {
+        + darAltaSeccion()
+        + generarCodigoProducto(): String
+        + ejecutarOpciones(): String
+    }
+
+    class GestionEconomica {
+        + mostrarIngresosEspacio()
+        + calcularIngresosCC(): double
+        + ejecutarOpciones(): String
+    }
+
+    class Coste {
+        - precio: double
+        - anio: int
+        + getPrecio(): double
+    }
+
+    class Consumicion {
+        - producto: Producto
+        - cantidad: int
+        - id: String
+        + calcularCosteConsumicion(): double
+    }
+
+    class Seccion {
+        - listaProductos: ArrayList<Carta>
+        + agregar(c: Carta)
+        + mostrarInfo()
+    }
+
+    Centro_Convenciones --> Espacio
+    Centro_Convenciones --> Reserva
+    Centro_Convenciones --> Carta
+    Reserva --> Consumicion
+    EquipamientoDecorador --> Espacio
+    MenuPrincipal --> Menus
+    Menus --> GestionEspacios
+    Menus --> GestionReservas
+    Menus --> GestionCartaProductos
+    Menus --> GestionEconomica
+    Carta <|-- Producto
+    Carta <|-- Seccion
+    Espacio --> Coste
+```
+
 ## Instalación
 
 1. Clona este repositorio:
