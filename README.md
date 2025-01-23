@@ -331,25 +331,79 @@ classDiagram
     Menus <|-- GestionEconomica
 ```
 
-## Instalación
+## Ejecución
+Puedes usar tu IDE favorito a continuación se muestran los pasos con dos IDEs
 
-1. Clona este repositorio:
-   ```bash
-   git clone https://github.com/asobrados03/Practica_FINAL_CentroDeConvenciones.git
-   cd Practica_FINAL_CentroDeConvenciones
+### **Usando IntelliJ IDEA**
+
+#### **1. Abrir el proyecto en IntelliJ**
+1. Abre IntelliJ IDEA.
+2. Ve a **File > Open** y selecciona la carpeta del repositorio que clonaste de GitHub.
+3. IntelliJ detectará automáticamente si el proyecto es de Java. Si no, te pedirá que configures un **SDK de Java**.
+
+   - Si es la primera vez, selecciona un JDK en tu máquina o descárgalo desde IntelliJ. Asegúrate de usar JDK 8 o superior.
+
+#### **2. Verificar la estructura del proyecto**
+1. Asegúrate de que tu archivo fuente (`Main.java`) (Clase principal de cada proyecto con el método main) esté dentro de una carpeta llamada `src` o algo similar. La estructura típica sería:
+
    ```
-2. Compila el proyecto:
-    ```bash
-   javac -d bin src/**/*.java
+   repositorio/
+   ├── src/
+   │   └── com/
+   │       └── ejemplo/
+   │           └── Main.java
    ```
-    Una alternativa al anterior comando si no funciona sería:
-   ```bash
-   javac -d bin src/Entrada/*.java src/Menus/*.java src/practica_final_centrodeconvenciones/*.java
+
+2. Si no tienes esta estructura, puedes configurar el directorio como "fuente" (`Source Root`):
+   - Haz clic derecho en la carpeta `src`.
+   - Selecciona **Mark Directory as > Sources Root**.
+
+#### **3. Ejecutar el programa**
+1. Abre el archivo `Main.java` en IntelliJ.
+2. Busca el botón verde con forma de triángulo ▶ junto al método `main`.
+3. Haz clic en ese botón y selecciona **Run 'Main'**.
+4. IntelliJ compilará automáticamente el programa y lo ejecutará en la consola integrada.
+
+#### **4. Configurar parámetros de ejecución (si son necesarios)**
+Si tu programa requiere argumentos de entrada, puedes configurarlos fácilmente:
+1. Ve a **Run > Edit Configurations**.
+2. Selecciona la configuración de tu clase principal (`Main`).
+3. En el campo **Program Arguments**, escribe los argumentos separados por espacios (por ejemplo, `arg1 arg2`).
+4. Haz clic en **OK** y vuelve a ejecutar el programa.
+
+### **Usando Eclipse**
+
+#### **1. Abrir el proyecto en Eclipse**
+1. Abre Eclipse.
+2. Ve a **File > Import > Existing Projects into Workspace**.
+3. Selecciona la carpeta del repositorio clonado de GitHub y haz clic en **Finish**.
+
+#### **2. Verificar la estructura del proyecto**
+1. Asegúrate de que tu archivo `Main.java` (Clase principal de cada proyecto con el método main) esté dentro de una carpeta marcada como **src**. Por ejemplo:
+
    ```
-3. Ejecuta el programa:
-   ```bash
-   java -cp bin practica_final_centrodeconvenciones.Practica_FINAL_CentroDeConvenciones
+   repositorio/
+   ├── src/
+   │   └── com/
+   │       └── ejemplo/
+   │           └── Main.java
    ```
+
+2. Si Eclipse no reconoce la carpeta como fuente, haz clic derecho en el proyecto:
+   - Ve a **Build Path > Configure Build Path**.
+   - En la pestaña **Source**, añade la carpeta `src` como fuente si no está configurada.
+
+#### **3. Ejecutar el programa**
+1. Haz doble clic en el archivo `Main.java` para abrirlo en el editor.
+2. Haz clic derecho en cualquier parte del archivo y selecciona **Run As > Java Application**.
+3. Eclipse compilará automáticamente el programa y lo ejecutará en la consola de Eclipse.
+
+#### **4. Configurar parámetros de ejecución**
+Si necesitas agregar argumentos de entrada:
+1. Haz clic derecho sobre el archivo `Main.java`.
+2. Ve a **Run As > Run Configurations**.
+3. En la pestaña **Arguments**, escribe los argumentos en el campo **Program Arguments**.
+4. Haz clic en **Apply** y luego en **Run**.
 
 ## Conclusiones
 El proyecto "Centro de Convenciones - Sistema de Gestión" destaca por su implementación efectiva de los principios de la Programación Orientada a Objetos (POO) y patrones de diseño como Singleton, Decorator, Composite y Strategy, que aportan flexibilidad, escalabilidad y reutilización al código. Su estructura modular y jerárquica, con una clara separación de responsabilidades entre clases como `Espacio`, `Reserva` y `Carta`, facilita el mantenimiento y futuras ampliaciones. Además, el sistema cubre áreas clave de gestión, como espacios, reservas, productos y aspectos económicos, haciéndolo práctico y aplicable a escenarios reales. La documentación incluye un detallado diagrama de clases que describe las relaciones entre los componentes, proporcionando una referencia clara para desarrolladores. Los casos de prueba aseguran la fiabilidad del sistema, validando funciones críticas como los cálculos económicos. Por último, el reconocimiento del esfuerzo colaborativo y la calificación sobresaliente de 9,6/10 reflejan tanto la calidad técnica como el compromiso del equipo.
